@@ -1,0 +1,6 @@
+[submodule "phd-data"]
+	path = phd-data
+	url = git@github.com:marvin-meck/phd-data.git
+[submodule "deps/pyoptdb"]
+	path = deps/pyoptdb
+	url = git@github.com:marvin-meck/pyoptdb.git

@@ -1,0 +1,24 @@
+SELECT 
+    t."T(K)",
+    c."formula",
+    t."delta-f H" -- in kJ / mol
+FROM (
+    SELECT 
+        "jcode",
+        "T(K)",
+        "delta-f H"
+    FROM thermo_tables
+    WHERE jcode IN (
+        SELECT jcode FROM compounds WHERE formula IN 
+        (
+            "C1H4(g)",
+            "H2O1(g)",
+            "C1O1(g)",
+            "H2(ref)",
+            "C1O2(g)"
+        )
+    )
+    AND "T(K)" BETWEEN 298.15 AND 1600
+) t
+JOIN compounds c on c.jcode = t.jcode
+;

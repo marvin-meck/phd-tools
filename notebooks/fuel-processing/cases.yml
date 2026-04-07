@@ -1,0 +1,29 @@
+temperature:
+  start: 600
+  stop: 1610
+  step: 10
+pressure:
+  - 1
+  - 5
+  - 10
+  - 20
+  - 30
+compounds:
+  - C1H4(g)
+  - C1O1(g)
+  - C1O2(g)
+  - H2O1(g)
+  - H2(ref)
+amount_element:
+  - C: 1 
+    H: 8
+    O: 2
+  - C: 2 
+    H: 18
+    O: 5
+  - C: 1
+    H: 10
+    O: 3
+  - C: 2 
+    H: 25
+    O: 6

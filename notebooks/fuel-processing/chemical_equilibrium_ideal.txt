@@ -1,0 +1,78 @@
+# Computes the chemical equilibrium by direct minimization of Gibbs free energy, c.f. [1,2]. 
+# Implementation in Pyomo modelling language, see [3]
+#
+# Author: Marvin Meck
+# E-Mail: marvin_maximilian.meck@tu-darmstadt.de
+# 
+# Corrensponding: Prof. Dr.-Ing. Peter F. Pelz
+# E-Mail: peter.pelz@tu-darmstadt.de
+#
+# References:
+# -----------
+# [1] White, W. B.; Johnson, S. M.; Dantzig, G. B. (1958): Chemical Equilibrium in Complex Mixtures. 
+#     In The Journal of Chemical Physics 28 (5), pp. 751–755. DOI: 10.1063/1.1744264.
+#
+# [2] McDonald, C. M.; Floudas, C. A. (1995): Global optimization for the phase and chemical equilibrium 
+#     problem: Application to the NRTL equation. In Computers & Chemical Engineering 19 (11), pp. 1111–1139. 
+#     DOI: 10.1016/0098-1354(94)00106-5.
+#
+# [3] Bongartz, D., Najman, J., Sass, S., & Mitsos, A. (2018). MAiNGO - McCormick-based Algorithm for mixed-
+#     integer Nonlinear Global Optimization. Technical Report, Process Systems Engineering (AVT.SVT), RWTH
+#     Aachen University.
+
+definitions:
+
+set{index} idx_species := {1,2,3,4,5};  # Species 1:CH4 2:CO2 3:CO 4:H2O 5:H2
+set{index} idx_element := {1,2,3};      # Elements 1:C 2:H 3:O
+
+real[5] n in [1e-6,5];                  # amount of substance [mol]
+real n_bar in [1e-6,5];                 # total amount of substance [mol] 
+
+real R := 8.3144598*1e-3;               # Gas constant [kJ/(mol K)]
+real T := 0;                            # Temperature [K]
+real p := 0;                            # Pressure [atm]
+real p0 := 1;                           # Standard pressure [atm]
+
+real[5] n0 := 0;                        # initial amount of substance [mol]
+real[5] dfG0 := 0;                      # standard Gibbs free energy of formation [kJ/(mol)]
+real[3,5] a := 0;                       # Elements in Species
+
+a[1,1] <- 1;
+a[1,2] <- 1;
+a[1,3] <- 1;
+
+a[2,1] <- 4;
+a[2,4] <- 2;
+a[2,5] <- 2;
+
+a[3,2] <- 2;
+a[3,3] <- 1;
+a[3,4] <- 1;
+
+# initialize 
+
+T <- 600;
+p <- 40;
+
+n0[1] <- 1;
+n0[4] <- 3;
+
+dfG0[1] <- -22.887;
+dfG0[2] <- -395.182;
+dfG0[3] <- -164.486;
+dfG0[4] <- -214.007;
+dfG0[5] <- 0.000;
+
+n.init[1] <- n0[1];
+n.init[2] <- n0[2];
+n.init[3] <- n0[3];
+n.init[4] <- n0[4];
+n.init[5] <- n0[5];
+
+constraints:
+
+sum(k in idx_species : n[k]) = n_bar;
+forall k in idx_element: sum(j in idx_species: a[k,j]*(n[j]-n0[j])) = 0;
+
+objective:
+sum( i in idx_species : n[i]*(dfG0[i]/(R*T) + log(p/p0) ) + n[i]*log(n[i]/n_bar) );

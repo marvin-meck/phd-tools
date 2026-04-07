@@ -1,0 +1,30 @@
+set SetCompounds := "C1H4(g)" "C1O2(g)" "C1O1(g)" "H2O1(g)" "H2(ref)";
+set SetElements := "C" "H" "O";
+
+param number_of_atoms default 0 :=
+    [C,*]   "C1H4(g)"   1
+            "C1O2(g)"   1
+            "C1O1(g)"   1
+    [H,*]   "C1H4(g)"   4
+            "H2O1(g)"   2
+            "H2(ref)"   2
+    [O,*]   "C1O2(g)"   2
+            "C1O1(g)"   1
+            "H2O1(g)"   1
+;
+
+param temperature := 600;
+param pressure := 40;
+param amount_element := 
+    "C" 1
+    "H" 10
+    "O" 3
+;
+
+param std_gibbs_free_energy := 
+    "C1H4(g)"   -191.3348
+    "C1O1(g)"   -232.5760
+    "C1O2(g)"   -526.5852
+    "H2(ref)"    -81.8352
+    "H2O1(g)"   -359.1560
+;

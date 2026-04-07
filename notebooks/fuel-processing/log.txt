@@ -1,0 +1,485 @@
+INSERT OR IGNORE INTO models(model_name,model_class,model_is_convex,description) 
+VALUES(
+	'Chemical Equilibrium Problem (perfect gas)',
+	'nlp',
+	1,
+	'Minimize Gibbs free energy of a mixture of perfect gases'
+);
+
+INSERT OR IGNORE INTO parameters(model_id,param_name,description) 
+VALUES (
+	(
+	SELECT model_id FROM models
+		WHERE
+		model_name='Chemical Equilibrium Problem (perfect gas)'
+	),
+	'std_gibbs_free_energy',
+	'gibbs free energy of formation in kJ/mol'
+);
+
+INSERT OR IGNORE INTO parameters(model_id,param_name,description) 
+VALUES (
+	(
+	SELECT model_id FROM models
+		WHERE
+		model_name='Chemical Equilibrium Problem (perfect gas)'
+	),
+	'gas_const',
+	'universal gas constant in kJ/(mol K)'
+);
+
+INSERT OR IGNORE INTO parameters(model_id,param_name,description) 
+VALUES (
+	(
+	SELECT model_id FROM models
+		WHERE
+		model_name='Chemical Equilibrium Problem (perfect gas)'
+	),
+	'temperature',
+	'absolute temperature in K'
+);
+
+INSERT OR IGNORE INTO parameters(model_id,param_name,description) 
+VALUES (
+	(
+	SELECT model_id FROM models
+		WHERE
+		model_name='Chemical Equilibrium Problem (perfect gas)'
+	),
+	'pressure',
+	'pressure'
+);
+
+INSERT OR IGNORE INTO parameters(model_id,param_name,description) 
+VALUES (
+	(
+	SELECT model_id FROM models
+		WHERE
+		model_name='Chemical Equilibrium Problem (perfect gas)'
+	),
+	'standard_pressure',
+	'standard pressure in atm'
+);
+
+INSERT OR IGNORE INTO parameters(model_id,param_name,description) 
+VALUES (
+	(
+	SELECT model_id FROM models
+		WHERE
+		model_name='Chemical Equilibrium Problem (perfect gas)'
+	),
+	'number_of_atoms',
+	'atom-weight of elements present in species'
+);
+
+INSERT OR IGNORE INTO parameters(model_id,param_name,description) 
+VALUES (
+	(
+	SELECT model_id FROM models
+		WHERE
+		model_name='Chemical Equilibrium Problem (perfect gas)'
+	),
+	'amount_element',
+	'amount of elements'
+);
+
+INSERT OR IGNORE INTO sets(model_id,set_name,description) 
+VALUES (
+	(
+	SELECT model_id FROM models
+		WHERE
+		model_name='Chemical Equilibrium Problem (perfect gas)'
+	),
+	'SetCompounds',
+	'chemical species involved'
+);
+
+INSERT OR IGNORE INTO sets(model_id,set_name,description) 
+VALUES (
+	(
+	SELECT model_id FROM models
+		WHERE
+		model_name='Chemical Equilibrium Problem (perfect gas)'
+	),
+	'SetElements',
+	'chemical elements involved'
+);
+
+INSERT OR IGNORE INTO variables(model_id,var_name,description) 
+VALUES (
+	(
+	SELECT model_id FROM models
+		WHERE
+		model_name='Chemical Equilibrium Problem (perfect gas)'
+	),
+	'amount_substance',
+	'amount of substance of species in equilibrium'
+);
+
+INSERT OR IGNORE INTO variables(model_id,var_name,description) 
+VALUES (
+	(
+	SELECT model_id FROM models
+		WHERE
+		model_name='Chemical Equilibrium Problem (perfect gas)'
+	),
+	'total_amount_substance',
+	'total amount of substance in equilibrium'
+);
+
+INSERT OR IGNORE INTO files(file_location,md5_checksum,file_kind,file_type) 
+VALUES(
+	'.pyoptdb/.files/8f7607e36033c62bba9cbc16cdd662da.py',
+	'8f7607e36033c62bba9cbc16cdd662da',
+	'model',
+	'.py'
+);
+
+INSERT OR IGNORE INTO model_has_file(model_id,file_id)
+VALUES (
+	(
+	SELECT model_id from models WHERE model_name='Chemical Equilibrium Problem (perfect gas)'
+	),
+	(
+	SELECT file_id FROM files WHERE md5_checksum='8f7607e36033c62bba9cbc16cdd662da'
+	)
+);
+
+INSERT OR IGNORE INTO data_sets(data_set_uuid1,model_id) 
+VALUES(
+	'6d2f014e-329e-11f1-90c0-9a06adea6466',
+	(
+		SELECT model_id from models
+		WHERE model_name='Chemical Equilibrium Problem (perfect gas)'
+	)
+);
+
+INSERT OR IGNORE INTO parameter_data(data_set_id,param_id,index_str,value)
+VALUES
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='std_gibbs_free_energy'),
+		'H2O1(g)',
+		-594.8228
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='std_gibbs_free_energy'),
+		'H2(ref)',
+		-249.96959999999999
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='std_gibbs_free_energy'),
+		'C1O2(g)',
+		-799.5268
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='std_gibbs_free_energy'),
+		'C1O1(g)',
+		-469.2726
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='std_gibbs_free_energy'),
+		'C1H4(g)',
+		-444.625
+	);
+
+INSERT OR IGNORE INTO parameter_data(data_set_id,param_id,index_str,value)
+VALUES
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='gas_const'),
+		'None',
+		0.00831446261815324
+	);
+
+INSERT OR IGNORE INTO parameter_data(data_set_id,param_id,index_str,value)
+VALUES
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='temperature'),
+		'None',
+		1600
+	);
+
+INSERT OR IGNORE INTO parameter_data(data_set_id,param_id,index_str,value)
+VALUES
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='pressure'),
+		'None',
+		30
+	);
+
+INSERT OR IGNORE INTO parameter_data(data_set_id,param_id,index_str,value)
+VALUES
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='standard_pressure'),
+		'None',
+		1
+	);
+
+INSERT OR IGNORE INTO parameter_data(data_set_id,param_id,index_str,value)
+VALUES
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='number_of_atoms'),
+		'(''C'', ''H2O1(g)'')',
+		0
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='number_of_atoms'),
+		'(''C'', ''H2(ref)'')',
+		0
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='number_of_atoms'),
+		'(''C'', ''C1O2(g)'')',
+		1
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='number_of_atoms'),
+		'(''C'', ''C1O1(g)'')',
+		1
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='number_of_atoms'),
+		'(''C'', ''C1H4(g)'')',
+		1
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='number_of_atoms'),
+		'(''H'', ''H2O1(g)'')',
+		2
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='number_of_atoms'),
+		'(''H'', ''H2(ref)'')',
+		2
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='number_of_atoms'),
+		'(''H'', ''C1O2(g)'')',
+		0
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='number_of_atoms'),
+		'(''H'', ''C1O1(g)'')',
+		0
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='number_of_atoms'),
+		'(''H'', ''C1H4(g)'')',
+		4
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='number_of_atoms'),
+		'(''O'', ''H2O1(g)'')',
+		1
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='number_of_atoms'),
+		'(''O'', ''H2(ref)'')',
+		0
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='number_of_atoms'),
+		'(''O'', ''C1O2(g)'')',
+		2
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='number_of_atoms'),
+		'(''O'', ''C1O1(g)'')',
+		1
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='number_of_atoms'),
+		'(''O'', ''C1H4(g)'')',
+		0
+	);
+
+INSERT OR IGNORE INTO parameter_data(data_set_id,param_id,index_str,value)
+VALUES
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='amount_element'),
+		'C',
+		2
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='amount_element'),
+		'H',
+		25
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT param_id from parameters WHERE param_name='amount_element'),
+		'O',
+		6
+	);
+
+INSERT OR IGNORE INTO set_data(data_set_id,set_id,index_str,value)
+VALUES
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT set_id from sets WHERE set_name='SetCompounds'),
+		'None',
+		'H2O1(g)'
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT set_id from sets WHERE set_name='SetCompounds'),
+		'None',
+		'H2(ref)'
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT set_id from sets WHERE set_name='SetCompounds'),
+		'None',
+		'C1O2(g)'
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT set_id from sets WHERE set_name='SetCompounds'),
+		'None',
+		'C1O1(g)'
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT set_id from sets WHERE set_name='SetCompounds'),
+		'None',
+		'C1H4(g)'
+	);
+
+INSERT OR IGNORE INTO set_data(data_set_id,set_id,index_str,value)
+VALUES
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT set_id from sets WHERE set_name='SetElements'),
+		'None',
+		'C'
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT set_id from sets WHERE set_name='SetElements'),
+		'None',
+		'H'
+	),
+	(
+		(SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'),
+		(SELECT set_id from sets WHERE set_name='SetElements'),
+		'None',
+		'O'
+	);
+
+INSERT OR IGNORE INTO files(file_location,md5_checksum,file_kind,file_type) 
+VALUES(
+	'.pyoptdb/.files/0e01f507e7df60e7ec7743925a7a5034.dat',
+	'0e01f507e7df60e7ec7743925a7a5034',
+	'data',
+	'.dat'
+);
+
+INSERT OR IGNORE INTO data_set_has_file(data_set_id,file_id)
+VALUES (
+	(
+	SELECT data_set_id from data_sets WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'
+	),
+	(
+	SELECT file_id FROM files WHERE md5_checksum='0e01f507e7df60e7ec7743925a7a5034'
+	)
+);
+
+INSERT OR IGNORE INTO solutions(data_set_id,solution_uuid1,sol_message,sol_status,objective,gap,time_seconds) 
+VALUES(
+	(
+		SELECT data_set_id from data_sets
+		WHERE data_set_uuid1='6d2f014e-329e-11f1-90c0-9a06adea6466'
+	),
+	'6d2f0194-329e-11f1-90c0-9a06adea6466',
+	'Ipopt 3.14.19\x3a Optimal Solution Found',
+	'optimal',
+	-373.7364913899843,
+	NULL,
+	0.01230001449584961
+);
+
+INSERT OR IGNORE INTO variable_data(solution_id,var_id,index_str,value)
+VALUES
+	(
+		(SELECT solution_id from solutions WHERE solution_uuid1='6d2f0194-329e-11f1-90c0-9a06adea6466'),
+		(SELECT var_id from variables WHERE var_name='amount_substance'),
+		'H2O1(g)',
+		3.7515534490583518
+	),
+	(
+		(SELECT solution_id from solutions WHERE solution_uuid1='6d2f0194-329e-11f1-90c0-9a06adea6466'),
+		(SELECT var_id from variables WHERE var_name='amount_substance'),
+		'H2(ref)',
+		8.744826323235477
+	),
+	(
+		(SELECT solution_id from solutions WHERE solution_uuid1='6d2f0194-329e-11f1-90c0-9a06adea6466'),
+		(SELECT var_id from variables WHERE var_name='amount_substance'),
+		'C1O2(g)',
+		0.2502566647947343
+	),
+	(
+		(SELECT solution_id from solutions WHERE solution_uuid1='6d2f0194-329e-11f1-90c0-9a06adea6466'),
+		(SELECT var_id from variables WHERE var_name='amount_substance'),
+		'C1O1(g)',
+		1.7479332213521797
+	),
+	(
+		(SELECT solution_id from solutions WHERE solution_uuid1='6d2f0194-329e-11f1-90c0-9a06adea6466'),
+		(SELECT var_id from variables WHERE var_name='amount_substance'),
+		'C1H4(g)',
+		0.0018101138530859542
+	);
+
+INSERT OR IGNORE INTO variable_data(solution_id,var_id,index_str,value)
+VALUES
+	(
+		(SELECT solution_id from solutions WHERE solution_uuid1='6d2f0194-329e-11f1-90c0-9a06adea6466'),
+		(SELECT var_id from variables WHERE var_name='total_amount_substance'),
+		'None',
+		14.496379772293828
+	);
+
+INSERT OR IGNORE INTO files(file_location,md5_checksum,file_kind,file_type) 
+VALUES(
+	'.pyoptdb/.files/d16e3926ff66cdbc41e77d618e03a1ff.yml',
+	'd16e3926ff66cdbc41e77d618e03a1ff',
+	'sol',
+	'.yml'
+);
+
+INSERT OR IGNORE INTO solution_has_file(solution_id,file_id) 
+VALUES (
+	(
+	SELECT solution_id from solutions WHERE solution_uuid1='6d2f0194-329e-11f1-90c0-9a06adea6466'
+	),
+	(
+	SELECT file_id FROM files WHERE md5_checksum='d16e3926ff66cdbc41e77d618e03a1ff'
+	)
+);
+

@@ -1,0 +1,10 @@
+print_level                    5               # verbosity level
+output_file                    ipopt.log       # log file
+sb                             yes             # short banner
+max_iter                       5000            # number of iterations
+
+tol                            1e-6
+constr_viol_tol                1e-6
+acceptable_tol                 1e-3
+acceptable_constr_viol_tol     1e-4
+acceptable_iter                10

@@ -1,0 +1,49 @@
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Lower bound: -.inf
+  Upper bound: .inf
+  Number of objectives: 1
+  Number of constraints: 4
+  Number of variables: 6
+  Sense: unknown
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Message: Ipopt 3.14.19\x3a Optimal Solution Found
+  Termination condition: optimal
+  Id: 0
+  Error rc: 0
+  Time: 0.028692960739135742
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 1
+  number of solutions displayed: 1
+- Gap: None
+  Status: optimal
+  Message: Ipopt 3.14.19\x3a Optimal Solution Found
+  Objective:
+    obj:
+      Value: -241.93917176231494
+  Variable:
+    amount_substance['C1H4(g)']:
+      Value: 0.9782904082221482
+    amount_substance['C1O1(g)']:
+      Value: 2.2450761980094087e-05
+    amount_substance['C1O2(g)']:
+      Value: 0.021687141015871776
+    amount_substance['H2(ref)']:
+      Value: 0.08681591634942759
+    amount_substance['H2O1(g)']:
+      Value: 2.956603267206276
+    total_amount_substance:
+      Value: 4.043419183555704
+  Constraint: No values
