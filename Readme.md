@@ -50,8 +50,8 @@ source ./phd-env/bin/activate
 
 Download and install
 ```
-git clone git@github.com:marvin-meck/phd-tools-dev.git
-cd phd-tools-dev
+git clone git@github.com:marvin-meck/phd-tools.git
+cd phd-tools
 git submodule init
 git submodule update
 python -m pip install --upgrade pip setuptools wheel
