@@ -92,6 +92,7 @@ class PostInstallCommand(install):
 
 setup(
     name="phdtools",
+    version="1.0.0",
     setup_requires=["requests>=2.32.4", "numpy>=2.2.6", "pandas>=2.3.1"],
     install_requires=[
         "ipython>=9.4.0",
